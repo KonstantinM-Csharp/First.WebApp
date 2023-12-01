@@ -10,7 +10,7 @@ namespace Firsts.WebApp.Models
         [JsonPropertyName("maker")]
         public string Maker { get; set; }
         [JsonPropertyName("img")]
-        public string Img { get; set; }
+        public string Image { get; set; }
         [JsonPropertyName("url")]
         public  string  Url { get; set; }
         [JsonPropertyName("title")]
