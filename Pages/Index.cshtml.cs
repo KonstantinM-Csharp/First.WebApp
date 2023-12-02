@@ -8,19 +8,18 @@ namespace Firsts.WebApp.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        public JsonFileProductsService ProductService { get; set; }
+        public JsonFileProductsService ProductsService;
         public IEnumerable<Product> Products { get; private set; }
 
-        public IndexModel(ILogger<IndexModel> logger, JsonFileProductsService productService)
+        public IndexModel(ILogger<IndexModel> logger, JsonFileProductsService productsService)
         {
             _logger = logger;
-            ProductService = productService;
-
+            ProductsService = productsService;
         }
 
         public void OnGet()
         {
-            Products = ProductService.GetProducts();
+            Products = ProductsService.GetProducts();
         }
     }
 }
