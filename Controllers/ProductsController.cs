@@ -20,5 +20,12 @@ namespace Firsts.WebApp.Controllers
         {
             return ProductsService.GetProducts();
         }
-    }
+		[Route("Rate")]
+		[HttpGet]
+		public ActionResult Get([FromQuery] string ProductId, [FromQuery] int Rating)
+		{
+            ProductsService.AddRating(ProductId, Rating);
+			return Ok();
+		}
+	}
 }
