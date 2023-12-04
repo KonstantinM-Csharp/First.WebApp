@@ -1,0 +1,37 @@
+﻿@using Microsoft.AspNetCore.Components.Web;
+@using Firsts.WebApp.Models;
+@using Firsts.WebApp.Services;
+@inject JsonFileProductsService ProductService;
+
+<div class="card-columns">
+
+    @foreach (var product in ProductService.GetProducts())
+    {
+        <div class="card">
+            <div class="card-img" style=" background-image: url('@product.Image')">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@product.Title;</h5>
+            </div>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">
+                <button @onclick="(e => SelectProduct(product.Id))" data-bs-toggle="modal" data-bs-target="#productModal" 
+                    class="btn btn-primary">More Info</button>
+            </small>
+        </div>
+    }
+
+
+</div>
+@code {
+    Product selectProduct;
+    string selectProductId;
+    void SelectProduct(string productId)
+    {
+        selectProductId = productId;
+        selectProduct = ProductService.GetProducts().First(x => x.Id == selectProductId);
+    }
+
+
+}
